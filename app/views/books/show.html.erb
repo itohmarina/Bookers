@@ -1,9 +1,11 @@
-<div><%= flash[:notice] %></div>
+<div class="book-wrap">
+  <div><%= flash[:notice] %></div>
 
-<b class="show-title">Title:</b>
-<%= @book.title %>
-<b class="show-body">Body:</b>
-<%= @book.body %>
+  <b class="show-title">Title:</b>
+  <%= @book.title %>
+  <b class="show-body">Body:</b>
+  <%= @book.body %>
 
-<%= link_to 'Edit', edit_book_path(@book.id) %>
-<%= link_to 'Back','/books' %>
+  <%= link_to 'Edit', edit_book_path(@book.id) %>
+  <%= link_to 'Back','/books' %>
+</div>

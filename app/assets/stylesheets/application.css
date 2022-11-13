@@ -13,3 +13,44 @@
  *= require_tree .
  *= require_self
  */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+.book-wrap{
+  margin-top: 30px;
+  margin-left: 30px;
+}
+
+.title, .body, .book-title, .book-body {
+  display: inline-block;
+}
+
+.title{
+  height: 50px;
+  width:150px;
+  text-align: center;
+}
+
+.body{
+  height: 50px;
+  width: 300px;
+  text-align: center;
+}
+
+.book-title{
+  height: 30px;
+  width: 150px;
+}
+
+.book-body{
+  height: 30px;
+  width: 300px;
+}
+
+.new-book{
+  margin-top: 30px;
+}
