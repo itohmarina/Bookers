@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
   resources :books
 
-  get 'books'=>'books#index'
-  get 'books/:id'=>'books#show'
-  get 'books/:id/edit'=>'books#edit'
   get root :to =>'homes#top'
-  post 'books/:id'=>'books#update'
-  delete 'books'=>'books#destroy', as:'destroy_book'
+
+  
 
 
 

@@ -1,27 +1,46 @@
 <div class="book-wrap">
+  <div>
+    <%=flash[:notice] %>
+  </div>
   <h1>Books</h1>
 
-  <div class="title">
-    <b>title</b>
-  </div>
-  <div class="body">
-    <b>body</b>
-  </div>
+  <table class="new-book">
+    <tr>
+      <th width="150">Title</th>
+      <th width="400">Body</th>
+    </tr>
+    <% @books.each do |abook| %>
+      <tr height="20">
+        <td><%= abook.title %></td>
+        <td><%= abook.body %></td>
+        <td class="td"><%=link_to "Show", book_path(abook.id) %></td>
+        <td class="td"><%=link_to "Edit", edit_book_path(abook.id) %></td>
+        <td class="td"><%=link_to "Destroy", book_path(abook.id), method: :delete, "data-confirm"=>"Are you sure?" %></td>
+      </tr>
+    <% end %>
+  </table>
 
 
-  <% @books.each do |book| %>
+
+
   <div class="book-box">
-    <div class="book-title"><%= book.title %></div>
-    <div class="book-body"><%= book.body %></div>
-    <%=link_to "Show", "/books/#{book.id}" %>
-    <%=link_to "Edit", "/books/#{book.id}/edit" %>
-    <%=link_to "Destroy", destroy_book_path(book.id),method: :delete, "data-confirm"=>"Are you sure?" %>
+    <div class="book-title"></div>
+    <div class="book-body"></div>
+
   </div>
-  <% end %>
+ </td>
 
 
   <% if @book.errors.any? %>
     <ul>
+      <span class="errors">
+        <%= @book.errors.count %>
+          <% if @book.errors.count==1 %>
+            <span>error prohibited this book from being saved:</span>
+          <% else %>
+            <span>errors prohibited this book from being saved:</span>
+          <% end %>
+      </span>
       <% @book.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
@@ -30,14 +49,16 @@
 
   <h2 class="new-book">New book</h2>
   <% newbook=Book.new %>
-  <%=form_with model:newbook, url:"/books/#{newbook.id}",method: :post do|f|%>
+  <%=form_with model:newbook, url:books_path(newbook.id),method: :post do|f|%>
     <p>Title</p>
     <%= f.text_field:title %>
 
     <p>Body</p>
     <%=f.text_area :body%>
 
-    <%=f.submit'Create Book'%>
+    <div>
+      <%=f.submit'Create Book'%>
+    </div>
   <%end%>
 
 </div>
